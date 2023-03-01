@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_24_193535) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_01_164506) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,69 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_24_193535) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "house_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["house_id"], name: "index_comments_on_house_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.boolean "status"
+    t.bigint "user_id", null: false
+    t.bigint "house_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["house_id"], name: "index_favorites_on_house_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "houses", force: :cascade do |t|
+    t.string "provincia"
+    t.string "departamento"
+    t.string "localidad"
+    t.string "barrio"
+    t.string "domicilio"
+    t.string "tipo"
+    t.string "condicion"
+    t.string "precio"
+    t.text "descripcion"
+    t.string "foto"
+    t.integer "dormitorio"
+    t.integer "bano"
+    t.integer "supcubierta"
+    t.integer "suptotal"
+    t.string "cochera"
+    t.boolean "mascota"
+    t.boolean "expensa"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.integer "ac"
+    t.boolean "amoblado"
+    t.integer "antiguedad"
+    t.boolean "internet"
+    t.boolean "piscina"
+    t.boolean "cable"
+    t.boolean "calefcentr"
+    t.boolean "telefono"
+    t.integer "cantambientes"
+    t.boolean "zonaescolar"
+    t.integer "barrioprivado"
+    t.integer "pisos"
+    t.boolean "balcon"
+    t.boolean "patio"
+    t.bigint "house_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["house_id"], name: "index_services_on_house_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -56,4 +119,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_24_193535) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "houses"
+  add_foreign_key "comments", "users"
+  add_foreign_key "favorites", "houses"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "services", "houses"
 end
