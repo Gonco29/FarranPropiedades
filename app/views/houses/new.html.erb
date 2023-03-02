@@ -1,0 +1,42 @@
+<h1>CREAR UNA PROPIEDAD NUEVA</h1>
+<div>
+  <%= form_with model: @house do |f| %>
+    <%= f.label :provincia %>
+    <%= f.text_field :provincia %>
+    <%= f.label :departamento %>
+    <%= f.text_field :departamento %>
+    <%= f.label :localidad %>
+    <%= f.text_field :localidad %>
+    <%= f.label :barrio %>
+    <%= f.text_field :barrio %>
+    <br>
+    <%= f.label :domicilio %>
+    <%= f.text_field :domicilio %>
+    <%= f.label :tipo %>
+    <%= f.text_field :tipo %>
+    <%= f.label :condicion %>
+    <%= f.text_field :condicion %>
+    <%= f.label :precio %>
+    <%= f.text_field :precio %>
+    <%= f.label :descripcion %>
+    <%= f.text_field :descripcion %>
+    <%= f.label :foto %>
+    <%= f.text_field :foto %>
+    <%= f.label :cochera %>
+    <%= f.text_field :cochera %>
+    <%= f.label :dormitorio %>
+    <%= f.number_field :dormitorio %>
+    <%= f.label :bano %>
+    <%= f.number_field :bano %>
+    <%= f.label :supcubierta %>
+    <%= f.number_field :supcubierta%>
+    <%= f.label :suptotal %>
+    <%= f.number_field :suptotal %>
+    <%= f.label :mascota %>
+    <%= f.check_box :mascota%>
+    <%= f.label :expensa %>
+    <%= f.check_box :expensa%>
+    <br>
+    <%= f.submit %>
+  <% end %>
+</div>
