@@ -13,4 +13,10 @@
 
 <p>Precio: <%= @house.precio %></p>
 
+<%= link_to "Editar", edit_house_path %>
+<%= link_to "Eliminar",
+  house_path(@house),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
+<br>
 <%= link_to "Volver a todas las propiedades", houses_path %>
