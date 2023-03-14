@@ -1,9 +1,10 @@
-<div class="">
+<div class="pt-5">
   <div class="house_show">
     <div class="card-show">
       <div class="card__title">
         <div class="icon">
           <a href="<% houses_path %>"><i class="fa fa-arrow-left"></i></a>
+          <%= @house.tipo %>
         </div>
         <%= image_tag "", style: "width: 50px; height: 50px; margin-left:50px;" %>
       </div>
@@ -11,42 +12,75 @@
         <div class="half">
           <div class="featured_text">
             <h1><%= @house.domicilio %></h1>
+            <%= @house.provincia %> - <%= @house.departamento%> - <%= @house.localidad %> - <%= @house.barrio %>
             <p class="price">$ <%= @house.precio %></p>
           </div>
-          <div class="image">
-            <% @house.photos.each do |photo| %>
-              <%= cl_image_tag photo.key, height: 300, crop: :fill %>
-            <% end %>
-          </div>
+
+
+
+
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <% @house.photos.each_with_index do |photo, index| %>
+      <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
+        <%= cl_image_tag photo.key, height: 400, crop: :fill, class:"d-block w-100" %>
+      </div>
+    <% end %>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+
+
         </div>
-        <div class="half">
-          <div class="description">
-            <p><%= @house.descripcion%></p>
+        <div class="half mt-5">
+          <h5>DATOS DE LA PROPIEDAD</h5>
+          <div class="description mt-5">
+            <hr>
+            <p>SUPERFICIE TOTAL: <%= @house.suptotal%> - SUPERFICIE CUBIERTA: <%= @house.supcubierta%></p>
+            <hr>
+            <p>BAÑOS: <%= @house.bano%></p>
+            <hr>
+            <p>DORMITORIOS: <%= @house.dormitorio%></p>
+            <hr>
+            <p>COCHERA: <%= @house.cochera%></p>
+            <hr>
+            <p>MASCOTA: <%= @house.mascota%> -  EXPENSAS: <%= @house.expensa%></p>
+            <hr>
+            <p>CONDICIÓN: <%= @house.condicion%></p>
+            <hr>
           </div>
-          <p>ESTADO: <%= @house.barrio == "disponible" ? "El regalo no ha sido reservado por nadie" : "El regalo fue reservado" %> </p>
-          <section class="reserve-links">
-            <% if @house.barrio == "pendiente" %>
-                <h5><%= button_to "Cancelar Reserva", root_path, method: "POST", class:"btn btn-secondary btn-sm"  %></h5>
-            <% else %>
-                <h5><%= button_to "Reservar", root_path, method: "POST", class:"btn btn-secondary btn-sm"  %></h5>
-            <% end %>
-          </section>
+
           <div class="reviews d-flex">
-            <p>Deseometro:   </p>
+            <p>BAÑOS:   </p>
             <ul class="stars">
               <%='<li><i class="fa-solid fa-heart"></i></li>'.html_safe *  @house.bano %><%='<li><i class="fa-regular fa-heart"></i></li>'.html_safe *  (5 - @house.bano) %>
             </ul>
           </div>
-          <div class="user-edit">
-            <%= link_to '<i class="fa fa-trash"></i>'.html_safe, house_path(@house), class:"btn btn-primary", data: {turbo_method: :delete, turbo_confirm: "Seguro?"}  %>
-            <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_house_path(@house), class:"btn btn-primary" %>
-          </div>
         </div>
+
       </div>
+      <p>DESCRIPCIÓN: <%= @house.descripcion%></p>
+
       <div class="card__footer">
         <div class="recommend">
           <p><%= @house.provincia %></p>
           <h3>by <a href="<%= user_session_path%>"><%= @house.user.email %></a></h3>
+          <%= link_to "Editar", edit_house_path %>
+          <%= link_to "Eliminar",
+            house_path(@house),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+          %>
+<br>
+<%= link_to "Volver a todas las propiedades", houses_path %>
         </div>
         <div class="action">
           <a href="<%= @house.departamento %>" class="btn btn-primary text-uppercase" target="_blank"><i class="fa-solid fa-cart-shopping"></i>  Ir a la tienda </a>
@@ -57,34 +91,4 @@
 </div>
 
 
-
-<hr>
-
-
-
-<h1> <%= @house.domicilio %>  </h1>
-<p><%= @house.foto %></p>
-  <% @house.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
-<p><%= @house.tipo %></p>
-<p>Provincia: <%= @house.provincia %></p>
-<p>Departamento: <%= @house.departamento %></p>
-<p>Localidad: <%= @house.localidad %></p>
-<p>Barrio: <%= @house.barrio %></p>
-<p>Condición: <%= @house.condicion %></p>
-<p>Descripción: <%= @house.descripcion %></p>
-<p>Dormitorios: <%= @house.provincia %></p>
-<p>Superficie Total: <%= @house.suptotal %></p>
-<p>Superficie Cubierta: <%= @house.supcubierta %></p>
-
-<p>Precio: <%= @house.precio %></p>
-
 <%# link para Agregar más información %>
-<%= link_to "Editar", edit_house_path %>
-<%= link_to "Eliminar",
-  house_path(@house),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%>
-<br>
-<%= link_to "Volver a todas las propiedades", houses_path %>

@@ -1,5 +1,4 @@
 require "open-uri"
-User.destroy_all
 House.destroy_all
 
 

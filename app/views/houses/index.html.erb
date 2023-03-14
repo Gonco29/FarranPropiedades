@@ -1,36 +1,6 @@
 <h1>Todos las Propiedades</h1>
 
 
-<div>
-  <%= link_to root_path do %>
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-pause="false" data-bs-interval="100" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <% @houses.each_with_index do |house, index| %>
-            <% house.photos.each do |photo| %>
-              <%= cl_image_tag photo.key, height: 300, crop: :fill %>
-            <% end %>
-          <%end%>
-        </div>
-      </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-  <% end %>
-</div>
-
-
 <div class="card m-5 " style="width: 18rem;">
   <% @houses.each do |house| %>
     <% house.photos.each do |photo| %>
