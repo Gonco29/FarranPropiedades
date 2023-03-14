@@ -50,7 +50,7 @@ gem "sassc-rails"
 
 gem "devise"
 gem "autoprefixer-rails"
-gem "font-awesome-sass", "~> 6.1"
+gem "font-awesome-sass", "~> 6.3"
 gem "simple_form", github: "heartcombo/simple_form"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -59,7 +59,7 @@ group :development, :test do
 
 end
 
-gem "cloudinary"				
+gem "cloudinary"
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]

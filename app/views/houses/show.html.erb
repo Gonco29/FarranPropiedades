@@ -1,5 +1,72 @@
+<div class="">
+  <div class="house_show">
+    <div class="card-show">
+      <div class="card__title">
+        <div class="icon">
+          <a href="<% houses_path %>"><i class="fa fa-arrow-left"></i></a>
+        </div>
+        <%= image_tag "", style: "width: 50px; height: 50px; margin-left:50px;" %>
+      </div>
+      <div class="card__body">
+        <div class="half">
+          <div class="featured_text">
+            <h1><%= @house.domicilio %></h1>
+            <p class="price">$ <%= @house.precio %></p>
+          </div>
+          <div class="image">
+            <% @house.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, height: 300, crop: :fill %>
+            <% end %>
+          </div>
+        </div>
+        <div class="half">
+          <div class="description">
+            <p><%= @house.descripcion%></p>
+          </div>
+          <p>ESTADO: <%= @house.barrio == "disponible" ? "El regalo no ha sido reservado por nadie" : "El regalo fue reservado" %> </p>
+          <section class="reserve-links">
+            <% if @house.barrio == "pendiente" %>
+                <h5><%= button_to "Cancelar Reserva", root_path, method: "POST", class:"btn btn-secondary btn-sm"  %></h5>
+            <% else %>
+                <h5><%= button_to "Reservar", root_path, method: "POST", class:"btn btn-secondary btn-sm"  %></h5>
+            <% end %>
+          </section>
+          <div class="reviews d-flex">
+            <p>Deseometro:   </p>
+            <ul class="stars">
+              <%='<li><i class="fa-solid fa-heart"></i></li>'.html_safe *  @house.bano %><%='<li><i class="fa-regular fa-heart"></i></li>'.html_safe *  (5 - @house.bano) %>
+            </ul>
+          </div>
+          <div class="user-edit">
+            <%= link_to '<i class="fa fa-trash"></i>'.html_safe, house_path(@house), class:"btn btn-primary", data: {turbo_method: :delete, turbo_confirm: "Seguro?"}  %>
+            <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_house_path(@house), class:"btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+      <div class="card__footer">
+        <div class="recommend">
+          <p><%= @house.provincia %></p>
+          <h3>by <a href="<%= user_session_path%>"><%= @house.user.email %></a></h3>
+        </div>
+        <div class="action">
+          <a href="<%= @house.departamento %>" class="btn btn-primary text-uppercase" target="_blank"><i class="fa-solid fa-cart-shopping"></i>  Ir a la tienda </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<hr>
+
+
+
 <h1> <%= @house.domicilio %>  </h1>
 <p><%= @house.foto %></p>
+  <% @house.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
 <p><%= @house.tipo %></p>
 <p>Provincia: <%= @house.provincia %></p>
 <p>Departamento: <%= @house.departamento %></p>
@@ -13,6 +80,7 @@
 
 <p>Precio: <%= @house.precio %></p>
 
+<%# link para Agregar más información %>
 <%= link_to "Editar", edit_house_path %>
 <%= link_to "Eliminar",
   house_path(@house),

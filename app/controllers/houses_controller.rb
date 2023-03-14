@@ -1,11 +1,12 @@
 class HousesController < ApplicationController
+  # before_action :set_user, only: %i[new create edit update destroy]
+  before_action :set_house, only: %i[show edit update destroy]
 
   def index
     @houses = House.all
   end
 
   def show
-    @house = House.find(params[:id])
   end
 
   def new
@@ -14,22 +15,23 @@ class HousesController < ApplicationController
 
   def create
     @house = House.new(house_params)
-    @house.save
-    redirect_to house_path(@house)
+    @house.user_id = current_user.id
+    if @house.save
+      redirect_to house_path(@house)
+    else
+      render 'new'
+    end
   end
 
   def edit
-    @house = House.find(params[:id])
   end
 
   def update
-    @house = House.find(params[:id])
     @house.update(house_params)
     redirect_to house_path(@house)
   end
 
   def destroy
-    @house = House.find(params[:id])
     @house.destroy
     redirect_to houses_path, status: :see_other
   end
@@ -40,6 +42,10 @@ class HousesController < ApplicationController
     params.require(:house).permit(:provincia, :departamento, :localidad,
                                   :barrio, :domicilio, :tipo, :condicion, :precio,
                                   :descripcion, :foto, :cochera, :dormitorio, :bano, :supcubierta, :suptotal, :mascota,
-                                  :expensa)
+                                  :user_id, :expensa, photos: [])
+  end
+
+  def set_house
+    @house = House.find(params[:id])
   end
 end
