@@ -1,25 +1,79 @@
+<%# <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8"> %>
+
+
 <div class="container">
-  <div class="w-50 mx-auto">
+  <div class="m-5">
     <%= simple_form_for(house) do |f| %>
-      <%= f.input :photos, as: :file, input_html: {multiple: true} %>
-      <%= f.input :domicilio %>
-      <%= f.input :barrio %>
-      <%= f.input :localidad %>
-      <%= f.input :departamento %>
-      <%= f.input :provincia %>
-      <%= f.input :tipo %>
-      <%= f.input :condicion %>
-      <%= f.input :descripcion %>
-      <%= f.input :foto %>
-      <%= f.input :cochera %>
-      <%= f.input :bano %>
-      <%= f.input :dormitorio %>
-      <%= f.input :supcubierta %>
-      <%= f.input :suptotal %>
-      <%= f.input :mascota %>
-      <%= f.input :expensa %>
-      <%= f.input :precio %>
-      <%= f.submit %>
+      <div class="row">
+        <div class="col-md-6 d-flex flex-column">
+          <%= f.input :condicion, collection: ['Venta', 'Alquiler', 'Alquiler Temporario', 'Permuta'] %>
+          <%= f.input :domicilio %>
+          <%= f.input :provincia, collection: ['Buenos Aires', 'Ciudad Autónoma de Buenos Aires', 'Catamarca','Chaco', 'Chubut', 'Córdoba', 'Corrientes','Entre Ríos','Formosa', 'Jujuy', 'La Pampa', 'La Rioja','Mendoza', 'Misiones', 'Neuquén', 'Río Negro', 'Salta', 'San Juan', 'San Luis', 'Santa Cruz', 'Santa Fé', 'Santiago del Estero', 'Tierra del Fuego', 'Tucumán'], prompt: 'Seleccionar provincia', input_html: {id: 'provincia-select'} %>
+          <div id="mendoza-departamentos" style="display:none">
+            <%= f.input :departamento, collection: ['Capital', 'Godoy Cruz', 'Guaymallén', 'Junín', 'La Paz', 'Las Heras', 'Lavalle', 'Luján de Cuyo', 'Maipú', 'Malargüe', 'Rivadavia', 'San Carlos', 'San Martín', 'San Rafael', 'Santa Rosa', 'Tunuyán', 'Tupungato', '25 de Mayo'], prompt: 'Seleccionar departamento' %>
+          </div>
+          <div id="otro-departamento" style="">
+            <%= f.input :departamento, placeholder: 'Ingresar departamento (o partido)' %>
+          </div>
+          <%= f.input :localidad %>
+          <%= f.input :barrio %>
+          <%= f.input :tipo, collection: ['Casa', 'Departamento', 'Cabaña', 'Cochera', 'Duplex', 'Loft', 'Bodega', 'Bodega con Viñedo', 'Campo', 'Chalet', 'Condominio', 'Edificio', 'Estacion de Servicio', 'Fábrica', 'Finca', 'Fondo de Comercio', 'Fraccionamiento', 'Galpón', 'Hotel', 'Industria', 'Local Comercial', 'Lote', 'Loteo', 'Negocio', 'Oficina', 'PH', 'Piso', 'Playa de Estacionamiento', 'Quinta', 'Semipiso', 'Triplex', 'Viñedo'] %>
+        </div>
+        <div class="col-md-6 d-flex flex-column">
+          <%= f.input :descripcion, label: "Descripción" %>
+          <div class="row">
+            <div class="col-6">
+              <%= f.input :bano, label: "Baños" %>
+            </div>
+            <div class="col-6">
+              <%= f.input :dormitorio, label: "Dormitorios"  %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <%= f.input :supcubierta, label: "Superficie Cubierta" %>
+            </div>
+            <div class="col-6">
+              <%= f.input :suptotal, label: "Superficie Total" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <%= f.input :cochera, collection: ['Sí', 'No'] %>
+            </div>
+            <div class="col-6">
+              <div style="display: inline-block;">
+                <%= f.input :mascota, label: "¿Permite Mascota?"  %>
+                <%= f.input :expensa, label: "¿Tiene Expensas?" %>
+              </div>
+            </div>
+          </div>
+          <%= f.input :precio %>
+          <%= f.input :photos, as: :file, input_html: {multiple: true}, label: "Cargar Fotos"  %>
+          <%= f.submit 'ACEPTAR', class: 'btn  w-100', style: 'background-color: #951920; color: #fff;' %>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var provinciaSelect = document.getElementById("provincia-select");
+    var mendozaDepartamentos = document.getElementById("mendoza-departamentos");
+    var otroDepartamento = document.getElementById("otro-departamento");
+
+    provinciaSelect.addEventListener("change", function(event) {
+      if (provinciaSelect.value == "Mendoza") {
+        mendozaDepartamentos.style.display = "block";
+        otroDepartamento.style.display = "none";
+      } else {
+        mendozaDepartamentos.style.display = "none";
+        otroDepartamento.style.display = "block";
+      }
+    });
+  });
+</script>

@@ -1,24 +1,62 @@
-<h1>Todos las Propiedades</h1>
+<div class="container">
 
+  <h1>Todos las Propiedades</h1>
+  <%= link_to "Crear Nueva Propiedad", new_house_path, class:"m-5" %>
 
-<div class="card m-5 " style="width: 18rem;">
-  <% @houses.each do |house| %>
-    <% house.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, crop: :fill %>
+  <div class="m-5">
+    <%= form_with url: houses_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Buscá tu próxima propiedad"
+      %>
+      <%= submit_tag "Buscar", class: "btn btn-primary ms-1", style:"background-color: #951920; border-color: #951920;" %>
     <% end %>
-    <div class="card-body ">
-      <h5 class="card-title "> <%= house.departamento %> - <%= house.provincia %> </h5>
-      <%= house.barrio %> - <%= house.domicilio %>
-      <%= link_to "Ver", house_path(house.id), class:"btn btn-primary" %>
+  </div>
 
+  <div class="m-5">
+    <div class="row">
+      <% @houses.each do |house| %>
+        <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+          <div class="card h-100 p-1" >
+            <div id="carouselExampleControls<%= house.id %>" class="carousel slide" data-interval="false">
+              <div class="carousel-inner">
+                <a href="<%= house_path(house.id) %>">
+                  <% house.photos.each_with_index do |photo, index| %>
+                    <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
+                      <%= cl_image_tag photo.key, height: 250, crop: :fill, gravity: :center, class: "d-block w-100% mx-auto" %>
+                    </div>
+                  <% end %>
+                </a>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"><%= house.domicilio %></h5>
+              <p class="card-text"><%= house.departamento %> - <%= house.provincia %></p>
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col-3">
+                  <i class="fa-solid fa-bed"></i> <%= house.dormitorio %>
+                </div>
+                <div class="col-3">
+                  <i class="fa-solid fa-bath"></i> <%= house.bano %>
+                </div>
+                <div class="col-3">
+                  <% if  house.cochera == "sí" %>
+                    <i class="fa-solid fa-car"> </i>
+                  <% end %>
+                </div>
+                <div class="col-3" style="background-image: url(https://res.cloudinary.com/dmizpueuw/image/upload/v1678914771/FARRAN%20PROPIEDADES/farran_propiedades_icon_sup_cub_v2_uekziy.svg); background-repeat: no-repeat;">
+                <%=house.suptotal%>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
-    <%# <i class="fa-light fa-bed"></i>
-    <i class="fa-thin fa-bed"></i>
-    <i class="fa-thin fa-bath"></i> %>
+  </div>
 
-    <i class="fa-solid fa-bath"></i>
-    <i class="fa-solid fa-shower"></i>
-  <% end %>
+
 </div>
-
-<%= link_to "Crear Nueva Propiedad", new_house_path %>

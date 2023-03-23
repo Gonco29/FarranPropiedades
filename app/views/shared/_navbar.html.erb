@@ -4,11 +4,22 @@
       <%= image_tag "https://res.cloudinary.com/dmizpueuw/image/upload/v1678295065/FARRAN%20PROPIEDADES/FARRAN_PROPIEDADES_logo_36836_kuhgz0.jpg" %>
     <% end %>
 
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div>
+        <%= form_with url: houses_path, method: :get, class: "d-flex" do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Buscador"
+          %>
+          <%= submit_tag "Buscar", class: "btn btn-primary ms-1", style:"background-color: #951920; border-color: #951920;" %>
+        <% end %>
+      </div>
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">

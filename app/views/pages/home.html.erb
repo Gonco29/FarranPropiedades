@@ -2,18 +2,28 @@
   <div class="container">
     <h1>FARRÁN PROPIEDADES</h1>
     <p>Operaciones Inmobiliarias</p>
-    <%= link_to "Todas las Propiedades", houses_path, class:"btn btn-warning mt-5"%>
+
+    <div class="m-5">
+      <%= form_with url: houses_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Buscá tu próxima propiedad"
+        %>
+        <%= submit_tag "Buscar", class: "btn btn-primary ms-1", style:"background-color: #951920; border-color: #951920;" %>
+      <% end %>
+    </div>
+
+    <%= link_to "Todas las Propiedades", houses_path, class:"btn btn-warning p-2 mt-5"%>
   </div>
 </div>
 
-<%= render "pages/homeservices" %>
+<%= render "pages/homeservicios" %>
+<%= render "pages/homedestacados" %>
+
 
 <div>
-  <h2>Xxxxxxxxxxxxx</h2>
-    <p>bla bla</p>
-</div>
-<div>
-  <h2>Xxxxxxxxxxxxx</h2>
+  <h2>CONTACTO</h2>
     <p>bla bla</p>
 </div>
 <div>

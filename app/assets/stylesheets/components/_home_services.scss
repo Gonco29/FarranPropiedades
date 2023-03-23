@@ -11,6 +11,11 @@ $c_1: #353540;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 30px;
+  @media screen and (max-width: 760px) {
+    .b-game-card {
+      padding-bottom: 75%;
+    }
+  }
   width: 100%;
   padding: 30px;
   // color: rgb(220, 206, 189)
@@ -29,21 +34,32 @@ $c_1: #353540;
   padding-bottom: 150%;
   perspective: 1000px;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-  h2 {
-    color: #951920;
+
+  .b-game-card__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-align: center;
     background-color: rgba(240, 248, 255, 0.6);
-    font-size: 1.5rem ;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    height: 40px;
-    // NO ESTÁ BIEN POSICIONADO EN EL EJE VERTICAL, LE PUSE PADDING MANUAL
-    margin-top: 180px;
-    padding-left: 10px;
-    text-transform: uppercase;
+    width: 100%;
+    padding: 5px;
   }
+
+  .b-game-card__text h2 {
+    color: #951920;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+
 
   &__cover {
     background-position: center center;
@@ -64,6 +80,10 @@ $c_1: #353540;
     will-change: transform;
     transform: skewX(.001deg);
     transition: transform .35s ease-in-out;
+
+    bottom: 0;
+    right: 0;
+    background-position: center center;
 
     // Gloss
 
@@ -115,6 +135,5 @@ $c_1: #353540;
     opacity: 0.6;
     transform: rotateX(7deg) translateY(-6px) scale(1.05);
   }
-
 
 }

@@ -45,7 +45,7 @@
           <h5>DATOS DE LA PROPIEDAD</h5>
           <div class="description mt-5">
             <hr>
-            <p>SUPERFICIE TOTAL: <%= @house.suptotal%> - SUPERFICIE CUBIERTA: <%= @house.supcubierta%></p>
+            <p>SUPERFICIE TOTAL: <%= @house.suptotal%>m²    -    SUPERFICIE CUBIERTA: <%= @house.supcubierta%>m²</p>
             <hr>
             <p>BAÑOS: <%= @house.bano%></p>
             <hr>
@@ -68,7 +68,7 @@
         </div>
 
       </div>
-      <p>DESCRIPCIÓN: <%= @house.descripcion%></p>
+      <p class="mx-5">DESCRIPCIÓN: <%= @house.descripcion%></p>
 
       <div class="card__footer">
         <div class="recommend">
@@ -83,7 +83,7 @@
 <%= link_to "Volver a todas las propiedades", houses_path %>
         </div>
         <div class="action">
-          <a href="<%= @house.departamento %>" class="btn btn-primary text-uppercase" target="_blank"><i class="fa-solid fa-cart-shopping"></i>  Ir a la tienda </a>
+          <a href="<%= @house.departamento %>" class="btn btn-success text-uppercase" target="_blank"><i class="fa-brands fa-square-whatsapp"></i>  CONSULTAR </a>
         </div>
       </div>
     </div>

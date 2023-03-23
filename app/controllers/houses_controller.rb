@@ -3,7 +3,11 @@ class HousesController < ApplicationController
   before_action :set_house, only: %i[show edit update destroy]
 
   def index
-    @houses = House.all
+    if params[:query].present?
+      @houses = House.search_houses(params[:query])
+    else
+      @houses = House.all
+    end
   end
 
   def show
