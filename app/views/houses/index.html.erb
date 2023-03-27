@@ -36,19 +36,27 @@
             </div>
             <div class="card-footer">
               <div class="row">
-                <div class="col-3">
+                <div class="col">
+                  <%= image_tag('https://res.cloudinary.com/dmizpueuw/image/upload/v1679941758/FARRAN%20PROPIEDADES/farran_propiedades_icon_sup_total.svg', style:"width: 30px; height: 30px") %>
+                  <%=house.suptotal%>
+                </div>
+                <div class="col">
+                  <%= image_tag('https://res.cloudinary.com/dmizpueuw/image/upload/v1678914771/FARRAN%20PROPIEDADES/farran_propiedades_icon_sup_cub_v2_uekziy.svg', style:"width: 30px; height: 30px") %>
+                  <%=house.supcubierta %>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col">
                   <i class="fa-solid fa-bed"></i> <%= house.dormitorio %>
                 </div>
-                <div class="col-3">
+                <div class="col">
                   <i class="fa-solid fa-bath"></i> <%= house.bano %>
                 </div>
-                <div class="col-3">
+                <div class="col">
                   <% if  house.cochera == "sí" %>
                     <i class="fa-solid fa-car"> </i>
                   <% end %>
-                </div>
-                <div class="col-3" style="background-image: url(https://res.cloudinary.com/dmizpueuw/image/upload/v1678914771/FARRAN%20PROPIEDADES/farran_propiedades_icon_sup_cub_v2_uekziy.svg); background-repeat: no-repeat;">
-                <%=house.suptotal%>
                 </div>
               </div>
             </div>

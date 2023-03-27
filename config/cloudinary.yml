@@ -1,0 +1,5 @@
+development:
+  cloud_name: "dmizpueuw"
+  api_key: "873112342536119"
+  api_secret: "CLOUDINARY_URL=cloudinary://873112342536119:WvZIfigL-govjEe45jIieZeQo0g@dmizpueuw"
+  secure: true

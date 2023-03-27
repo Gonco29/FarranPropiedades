@@ -1,0 +1,21 @@
+<div class="m-5 mb-0 p-3 border border-white">
+  <%= form_with url: houses_path, method: :get, class: "d-flex" do %>
+      <%= select_tag :condicion,
+      options_for_select(['Venta', 'Alquiler', 'Alquiler Temporario', 'Permuta'], params[:condicion]),
+      class: "form-check ms-1",
+      data: {action: "change->search-variables#updateQuery"}
+    %>
+      <%= select_tag :tipo,
+      options_for_select(['Casa', 'Departamento', 'Cabaña', 'Cochera', 'Duplex', 'Loft', 'Bodega', 'Bodega con Viñedo', 'Campo', 'Chalet', 'Condominio', 'Edificio', 'Estacion de Servicio', 'Fábrica', 'Finca', 'Fondo de Comercio', 'Fraccionamiento', 'Galpón', 'Hotel', 'Industria', 'Local Comercial', 'Lote', 'Loteo', 'Negocio', 'Oficina', 'PH', 'Piso', 'Playa de Estacionamiento', 'Quinta', 'Semipiso', 'Triplex', 'Viñedo'], params[:tipo]),
+      class: "form-check ms-1",
+      data: {action: "change->search-variables#updateQuery"}
+    %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control ms-1",
+      placeholder: "Ingresa zona o palabra clave",
+      data: {target: "searchVariables.query"}
+    %>
+    <%= submit_tag "Buscar", class: "btn btn-primary ms-1", style:"background-color: #951920; border-color: #951920;" %>
+  <% end %>
+</div>

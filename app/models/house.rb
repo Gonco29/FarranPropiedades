@@ -11,6 +11,7 @@ class House < ApplicationRecord
             :cochera, :photos, presence: true
 
   include PgSearch::Model
-  pg_search_scope :search_houses, against: %i[provincia departamento localidad barrio domicilio tipo precio],
+  pg_search_scope :search_houses, against: %i[provincia departamento localidad barrio domicilio tipo precio condicion],
                                   using: { tsearch: { prefix: true } }
 end
+  

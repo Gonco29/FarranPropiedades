@@ -4,7 +4,7 @@
       <div class="card__title">
         <div class="icon">
           <a href="<% houses_path %>"><i class="fa fa-arrow-left"></i></a>
-          <%= @house.tipo %>
+          <%= @house.condicion %>
         </div>
         <%= image_tag "", style: "width: 50px; height: 50px; margin-left:50px;" %>
       </div>
@@ -45,6 +45,8 @@
           <h5>DATOS DE LA PROPIEDAD</h5>
           <div class="description mt-5">
             <hr>
+            <p>TIPO: <%= @house.tipo%></p>
+            <hr>
             <p>SUPERFICIE TOTAL: <%= @house.suptotal%>m²    -    SUPERFICIE CUBIERTA: <%= @house.supcubierta%>m²</p>
             <hr>
             <p>BAÑOS: <%= @house.bano%></p>
@@ -54,8 +56,6 @@
             <p>COCHERA: <%= @house.cochera%></p>
             <hr>
             <p>MASCOTA: <%= @house.mascota%> -  EXPENSAS: <%= @house.expensa%></p>
-            <hr>
-            <p>CONDICIÓN: <%= @house.condicion%></p>
             <hr>
           </div>
 

@@ -4,7 +4,8 @@
 
 
 <div class="container">
-  <div class="m-5">
+<hr>
+  <div class="m-3">
     <%= simple_form_for(house) do |f| %>
       <div class="row">
         <div class="col-md-6 d-flex flex-column">
@@ -33,10 +34,10 @@
           </div>
           <div class="row">
             <div class="col-6">
-              <%= f.input :supcubierta, label: "Superficie Cubierta" %>
+              <%= f.input :supcubierta, label: "Superficie Cubierta m²" %>
             </div>
             <div class="col-6">
-              <%= f.input :suptotal, label: "Superficie Total" %>
+              <%= f.input :suptotal, label: "Superficie Total m²" %>
             </div>
           </div>
           <div class="row">
@@ -57,6 +58,9 @@
       </div>
     <% end %>
   </div>
+  <hr>
+
+
 </div>
 
 

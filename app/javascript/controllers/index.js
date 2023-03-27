@@ -12,3 +12,6 @@ application.register("hello", HelloController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
+
+import SearchVariablesController from "./search_variables_controller"
+application.register("search-variables", SearchVariablesController)
