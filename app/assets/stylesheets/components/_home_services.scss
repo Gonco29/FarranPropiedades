@@ -3,9 +3,11 @@
 $c_0: #000000;
 $c_1: #353540;
 
+.seccion_servicios_home {
+  height: 80vh;
+}
+
 // Basic reset
-
-
 
 .l-container {
   display: grid;
@@ -18,7 +20,7 @@ $c_1: #353540;
   }
   width: 100%;
   padding: 30px;
-  // color: rgb(220, 206, 189)
+  // color: rgb(227, 224, 222)
 
 
   @media screen and (max-width: 760px) {
@@ -31,7 +33,7 @@ $c_1: #353540;
   position: relative;
   z-index: 1;
   width: 100%;
-  padding-bottom: 75%;
+  padding-bottom: 100%;
   perspective: 1000px;
 
   display: flex;
@@ -52,8 +54,10 @@ $c_1: #353540;
   }
 
   .b-game-card__text h2 {
-    color: #951920;
-    font-size: 1.5rem;
+    // color: #951920;
+    white-space: nowrap;
+    color: black;
+    font-size: 2vw;
     font-weight: bold;
     text-transform: uppercase;
     margin: 0;

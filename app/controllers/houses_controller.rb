@@ -8,9 +8,26 @@ class HousesController < ApplicationController
     else
       @houses = House.all
     end
+
+    @flats = Flat.all
+    # The `geocoded` scope filters only flats with coordinates
+    @markers = @flats.geocoded.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude
+      }
+    end
   end
 
   def show
+    @houses = House.all
+    # The `geocoded` scope filters only flats with coordinates
+    @markers = @houses.geocoded.map do |house|
+      {
+        lat: house.latitude,
+        lng: house.longitude
+      }
+    end
   end
 
   def new
@@ -46,7 +63,7 @@ class HousesController < ApplicationController
     params.require(:house).permit(:provincia, :departamento, :localidad,
                                   :barrio, :domicilio, :tipo, :condicion, :precio,
                                   :descripcion, :foto, :cochera, :dormitorio, :bano, :supcubierta, :suptotal, :mascota,
-                                  :user_id, :expensa, photos: [])
+                                  :user_id, :expensa, :address, photos: [])
   end
 
   def set_house

@@ -5,19 +5,19 @@
 
 <div class="container">
 <hr>
-  <div class="m-3">
+  <div class="m-3" onchange="autocomplete();" onkeyup='autocomplete()'>
     <%= simple_form_for(house) do |f| %>
       <div class="row">
         <div class="col-md-6 d-flex flex-column">
           <%= f.input :condicion, collection: ['Venta', 'Alquiler', 'Alquiler Temporario', 'Permuta'] %>
           <%= f.input :domicilio %>
           <%= f.input :provincia, collection: ['Buenos Aires', 'Ciudad Autónoma de Buenos Aires', 'Catamarca','Chaco', 'Chubut', 'Córdoba', 'Corrientes','Entre Ríos','Formosa', 'Jujuy', 'La Pampa', 'La Rioja','Mendoza', 'Misiones', 'Neuquén', 'Río Negro', 'Salta', 'San Juan', 'San Luis', 'Santa Cruz', 'Santa Fé', 'Santiago del Estero', 'Tierra del Fuego', 'Tucumán'], prompt: 'Seleccionar provincia', input_html: {id: 'provincia-select'} %>
-          <div id="mendoza-departamentos" style="display:none">
+          <div id="mendoza-departamentos" style="">
             <%= f.input :departamento, collection: ['Capital', 'Godoy Cruz', 'Guaymallén', 'Junín', 'La Paz', 'Las Heras', 'Lavalle', 'Luján de Cuyo', 'Maipú', 'Malargüe', 'Rivadavia', 'San Carlos', 'San Martín', 'San Rafael', 'Santa Rosa', 'Tunuyán', 'Tupungato', '25 de Mayo'], prompt: 'Seleccionar departamento' %>
           </div>
-          <div id="otro-departamento" style="">
-            <%= f.input :departamento, placeholder: 'Ingresar departamento (o partido)' %>
-          </div>
+          <%# <div id="otro-departamento" style=""> %>
+            <%#= f.input :departamento, placeholder: 'Ingresar departamento (o partido)' %>
+          <%# </div> %>
           <%= f.input :localidad %>
           <%= f.input :barrio %>
           <%= f.input :tipo, collection: ['Casa', 'Departamento', 'Cabaña', 'Cochera', 'Duplex', 'Loft', 'Bodega', 'Bodega con Viñedo', 'Campo', 'Chalet', 'Condominio', 'Edificio', 'Estacion de Servicio', 'Fábrica', 'Finca', 'Fondo de Comercio', 'Fraccionamiento', 'Galpón', 'Hotel', 'Industria', 'Local Comercial', 'Lote', 'Loteo', 'Negocio', 'Oficina', 'PH', 'Piso', 'Playa de Estacionamiento', 'Quinta', 'Semipiso', 'Triplex', 'Viñedo'] %>
@@ -53,6 +53,7 @@
           </div>
           <%= f.input :precio %>
           <%= f.input :photos, as: :file, input_html: {multiple: true}, label: "Cargar Fotos"  %>
+          <%= f.input :address, input_html:{class: "d-none"}, label:false %>
           <%= f.submit 'ACEPTAR', class: 'btn  w-100', style: 'background-color: #951920; color: #fff;' %>
         </div>
       </div>
@@ -62,8 +63,25 @@
 
 
 </div>
+<script>
+function autocomplete() {
+
+  let calleNum = document.getElementById('house_domicilio').value
+  let departamento = document.getElementById('house_departamento').value
+  let provincia = document.getElementById('provincia-select').value
+  let dominterpolado = `${calleNum}, ${departamento}, ${provincia}`
+  console.log(dominterpolado)
+  let address = document.getElementById('house_address')
+  address.value = dominterpolado
+
+  // console.log("calle", calleNum)
+  // console.log("depto", departamento)
+  // console.log("prov", provincia)
 
 
+}
+</script>
+<%#
 <script>
   document.addEventListener("DOMContentLoaded", function(event) {
     var provinciaSelect = document.getElementById("provincia-select");
@@ -80,4 +98,4 @@
       }
     });
   });
-</script>
+</script> %>

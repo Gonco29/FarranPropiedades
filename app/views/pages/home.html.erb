@@ -1,27 +1,45 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dmizpueuw/image/upload/v1678295066/FARRAN%20PROPIEDADES/john-schnobrich-2FPjlAyMQTA-unsplash_fu1zbw.jpg);">
+<div class="home_banner">
   <div class="container">
     <h1>FARRÁN PROPIEDADES</h1>
     <p>Operaciones Inmobiliarias</p>
 
     <%= render "pages/formbuscador" %>
 
-    <%= link_to "Todas las Propiedades", houses_path, class:"btn btn-warning p-2 mt-5"%>
+    <%= link_to "Ver todas las Propiedades", houses_path, class:"btn btn-warning p-3 mt-5"%>
   </div>
 </div>
 
+
 <%= render "pages/homeservicios" %>
+
+<div>
+  <h2>Xq Chelo</h2>
+    <p>profesional, serio, sexy</p>
+</div>
+
 <%= render "pages/homedestacados" %>
+
+<div id="carouselExampleControls" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000" data-wrap="true" data-bs-pause="false">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <%= image_tag('https://res.cloudinary.com/dmizpueuw/image/upload/v1680010540/FARRAN%20PROPIEDADES/roam-in-color-RryFk4n-vOs-unsplash_ieinoy.jpg', class:"d-block w-100 foto-tasacion") %>
+    </div>
+    <div class="carousel-item foto-tasacion">
+      <%= image_tag('https://res.cloudinary.com/dmizpueuw/image/upload/v1680010541/FARRAN%20PROPIEDADES/sven-brandsma-7nBjGZVOfMw-unsplash_rrdent.jpg', class:"d-block w-100 foto-tasacion") %>
+    </div>
+    <div class="carousel-item foto-tasacion">
+      <%= image_tag('https://res.cloudinary.com/dmizpueuw/image/upload/v1680010540/FARRAN%20PROPIEDADES/katja-rooke-77JACslA8G0-unsplash_wiry5r.jpg', class:"d-block w-100 foto-tasacion") %>
+    </div>
+  </div>
+  <div class="carousel-text">
+    <h1>¿Cuál es el valor de tu propiedad?</h1>
+    <p>FARRÁN PROPIEDADES ofrece un servicio seguro y confiable de tasación de inmuebles.
+  </div>
+</div>
+
 
 
 <div>
   <h2>CONTACTO</h2>
-    <p>bla bla</p>
-</div>
-<div>
-  <h2>Xxxxxxxxxxxxx</h2>
-    <p>bla bla</p>
-</div>
-<div>
-  <h2>Xxxxxxxxxxxxx</h2>
     <p>bla bla</p>
 </div>
