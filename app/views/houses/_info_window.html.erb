@@ -1,0 +1,25 @@
+<a href="<%= house_path(house.id) %>" style="all: unset;">
+  <div>
+    <div class="badge rounded-pill bg-primary fs-6">
+      <%= house.condicion %>
+    </div>
+    <div style="border: 2px solid #951920; padding: 12px; margin-top: 5px">
+      <p><%= house.address %></p>
+      <div class="d-flex justify-content-between align-items-center">
+        <i class="fa-solid fa-bed"></i> <%= house.dormitorio %>
+        <i class="fa-solid fa-bath"></i> <%= house.bano %>
+        <% if  house.cochera == "sí" %>
+          <i class="fa-solid fa-car"> </i>
+        <% end %>
+        <div class="">
+          <%= image_tag('https://res.cloudinary.com/dmizpueuw/image/upload/v1679941758/FARRAN%20PROPIEDADES/farran_propiedades_icon_sup_total.svg', style:"width: 1.25rem; height: 1.25rem") %>
+          <%=house.suptotal%>
+        </div>
+        <div class="">
+          <%= image_tag('https://res.cloudinary.com/dmizpueuw/image/upload/v1678914771/FARRAN%20PROPIEDADES/farran_propiedades_icon_sup_cub_v2_uekziy.svg', style:"width: 1.25rem; height: 1.25rem") %>
+          <%=house.supcubierta %>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>

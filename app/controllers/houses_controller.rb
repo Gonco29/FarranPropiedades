@@ -9,25 +9,25 @@ class HousesController < ApplicationController
       @houses = House.all
     end
 
-    @flats = Flat.all
-    # The `geocoded` scope filters only flats with coordinates
-    @markers = @flats.geocoded.map do |flat|
-      {
-        lat: flat.latitude,
-        lng: flat.longitude
-      }
-    end
-  end
-
-  def show
     @houses = House.all
     # The `geocoded` scope filters only flats with coordinates
     @markers = @houses.geocoded.map do |house|
       {
         lat: house.latitude,
-        lng: house.longitude
+        lng: house.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { house: house }),
+        marker_html: render_to_string(partial: "marker")
       }
     end
+  end
+
+  def show
+    @marker = {
+      lat: @house.latitude,
+      lng: @house.longitude,
+      info_window_html: render_to_string(partial: "info_window", locals: { house: @house }),
+      marker_html: render_to_string(partial: "marker")
+    }
   end
 
   def new

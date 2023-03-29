@@ -36,6 +36,7 @@ prop1 = House.new(
   cochera: 'sí',
   mascota: true,
   expensa: true,
+  address: 'Roque Saen Peña 1265, Godoy Cruz, Mendoza',
   user_id: 1
 )
 
@@ -67,6 +68,7 @@ prop2 = House.new(
   cochera: 'sí',
   mascota: true,
   expensa: false,
+  address: 'Jacarandá 7431, Luján, Mendoza',
   user_id: 1
 )
 
@@ -82,10 +84,10 @@ prop2.save
 
 prop3 = House.new(
   provincia: 'Mendoza',
-  departamento: 'Ciudad',
+  departamento: 'Capital',
   localidad: '5ta Sección',
   # barrio: ,
-  domicilio: 'Emilio Civit 380',
+  domicilio: 'Emilio Civit 685',
   tipo: 'Cabaña',
   condicion: 'Permuta',
   precio: '$150.000',
@@ -97,6 +99,7 @@ prop3 = House.new(
   cochera: 'sí',
   mascota: false,
   expensa: true,
+  address: 'Emilio Civit 685, Capital, Mendoza',
   user_id: 1
 )
 
@@ -111,7 +114,7 @@ prop4 = House.new(
   departamento: 'Guaymallén',
   localidad: 'Villanueva',
   # barrio: ,
-  domicilio: 'Pepe 380',
+  domicilio: 'Av. de Acceso Este 3280',
   tipo: 'Casa',
   condicion: 'Venta',
   precio: '$200.000',
@@ -123,6 +126,7 @@ prop4 = House.new(
   cochera: 'no',
   mascota: false,
   expensa: true,
+  address: 'Av. de Acceso Este 3280, Guaymallén, Mendoza',
   user_id: 1
 )
 
@@ -135,9 +139,9 @@ prop4.save
 prop5 = House.new(
   provincia: 'Mendoza',
   departamento: 'Luján',
-  localidad: 'Carrodilla',
-  barrio: 'Barrio Pipipipipi',
-  domicilio: 'El Salvador 50',
+  localidad: 'La Puntilla',
+  barrio: 'Barrio El Huerto',
+  domicilio: 'El Salvador 7649',
   tipo: 'Casa',
   condicion: 'Venta',
   precio: 'U$S 1.000.000',
@@ -149,6 +153,7 @@ prop5 = House.new(
   cochera: 'sí',
   mascota: true,
   expensa: false,
+  address: 'El Salvador 7649, Luján, Mendoza',
   user_id: 1
 )
 
@@ -163,10 +168,10 @@ prop5.save
 
 prop6 = House.new(
   provincia: 'Mendoza',
-  departamento: 'Luján',
-  localidad: 'Carrodilla',
+  departamento: 'Las Heras',
+  localidad: 'Las Heras',
   barrio: 'Barrio Pipipipipi',
-  domicilio: 'El Huerto 80',
+  domicilio: 'Av. San Martin 2430',
   tipo: 'Departamento',
   condicion: 'Venta',
   precio: 'U$S 1.000.000',
@@ -178,6 +183,7 @@ prop6 = House.new(
   cochera: 'sí',
   mascota: true,
   expensa: false,
+  address: 'Av. San Martin 2430, Las Heras, Mendoza',
   user_id: 1
 )
 
@@ -192,10 +198,10 @@ prop6.save
 
 prop7 = House.new(
   provincia: 'Mendoza',
-  departamento: 'Luján',
-  localidad: 'Carrodilla',
-  barrio: 'Barrio Pipipipipi',
-  domicilio: 'Jacarandá 7840',
+  departamento: 'Maipú',
+  localidad: '',
+  barrio: '',
+  domicilio: 'J. A. Maza 2084',
   tipo: 'Casa',
   condicion: 'Alquiler',
   precio: 'U$S 1.000.000',
@@ -207,6 +213,7 @@ prop7 = House.new(
   cochera: 'sí',
   mascota: true,
   expensa: false,
+  address: 'J. A. Maza 2084, Maipú, Mendoza',
   user_id: 1
 )
 
@@ -221,10 +228,10 @@ prop7.save
 
 prop8 = House.new(
   provincia: 'Mendoza',
-  departamento: 'Luján',
-  localidad: 'Carrodilla',
-  barrio: 'Barrio Pipipipipi',
-  domicilio: 'Álzaga 2432',
+  departamento: 'Godoy Cruz',
+  localidad: 'Godoy Cruz',
+  barrio: 'Bombal Sur',
+  domicilio: 'Arizu 143',
   tipo: 'Casa',
   condicion: 'Venta',
   precio: 'U$S 1.000.000',
@@ -236,6 +243,7 @@ prop8 = House.new(
   cochera: 'sí',
   mascota: true,
   expensa: false,
+  address: 'Arizu 143, Godoy Cruz, Mendoza',
   user_id: 1
 )
 
