@@ -1,0 +1,124 @@
+<div id="sign-form" >
+  <div class="container" id="container">
+    <%# FORMULARIO PARA REGISTRARSE - SingUp %>
+    <div class="form-container sign-up-container ">
+      <div class='form'>
+        <div class="form-sign-up">
+          <h1>Registrate</h1>
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: false }) do |f| %>
+            <%= f.error_notification %>
+
+            <div class="form-inputs">
+              <div class="input">
+                <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" },
+                label: "Correo Electronico"%>
+              </div>
+
+              <div class="input">
+                <%= f.input :password,
+                required: true,
+                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                input_html: { autocomplete: "new-password" },
+                label: "Contraseña" %>
+              </div>
+
+              <div class="input">
+                <%= f.input :password_confirmation,
+                required: true,
+                input_html: { autocomplete: "new-password" },
+                label: "Repetir Contraseña" %>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, "Registrarse", class:"btn btn-primary button" %>
+            </div>
+          <% end %>
+
+          <span>O Usar tu Cuenta</span>
+          <div class="social-container">
+            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%# FORMULARIO PARA INGRESAR - LogIn %>
+    <div class="form-container sign-in-container">
+      <div class='form'>
+        <h1>Ingresá</h1>
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
+          <%= f.error_notification %>
+          <div class="form-inputs">
+            <div class="input">
+              <%= f.input :email,
+              required: false,
+              autofocus: true,
+              input_html: { autocomplete: "email" },
+              label: "Correo Electrónico:" %>
+            </div>
+
+            <div class="input">
+              <%= f.input :password,
+              required: false,
+              input_html: { autocomplete: "current-password" },
+              label: "Contraseña:" %>
+            </div>
+
+            <div class="input">
+              <%= f.input :remember_me, label: "Recordame", as: :boolean if devise_mapping.rememberable? %>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, "Ingresar", class:"btn btn-primary button mb-5" %>
+          </div>
+        <% end %>
+
+        <span>O Ingresá con tu Cuenta de:</span>
+        <div class="social-container">
+          <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+          <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <%= link_to '¿Olvidaste tu contraseña?', new_user_password_path %>
+      </div>
+    </div>
+    <%# PANEL DEL COSTADO AL FORMULARIO%>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-right">
+          <h1>¡Hola de Nuevo!</h1>
+          <p>Si todavía no tenés cuenta</p>
+          <button class="ghost btn btn-primary button" id="signUp">Registrate acá</button>
+        </div>
+        <div class="overlay-panel overlay-left">
+          <h1>Bienvenido a</h1>
+          <%# !!!!!!HAY QUE MEJORAR LA CALIDAD DE LA IMAGEN CUANDO EL CHELO ME PASE LAS IMAGENES EN MEJOR CALIDAD %>
+          <%= image_tag("https://res.cloudinary.com/dmizpueuw/image/upload/v1680135515/FARRAN%20PROPIEDADES/Parte%20del%20Proyecto/inv_FARRAN_PROPIEDADES_logo_36836_kuhgz0-removebg-preview_yfj84w.png", style: "width: 100%;") %>
+          <p>Si ya tenés cuenta</p>
+          <button class="ghost btn btn-primary button" id="signIn">Ingresá acá</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  let signUpButton = document.getElementById('signUp');
+  let signInButton = document.getElementById('signIn');
+  let container = document.getElementById('container');
+
+  signInButton.addEventListener('click', () => {
+    container.classList.remove("right-panel-active");
+  });
+
+  signUpButton.addEventListener('click', () => {
+    container.classList.add("right-panel-active");
+  });
+</script>
